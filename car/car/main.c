@@ -9,7 +9,7 @@ int main (void) {
 	 * We will be using OCR1A as our PWM output which is the
 	 * same pin as PB1.
 	 */
-	//DDRB |= _BV(PB1);
+	DDRB |= _BV(PB1);
 
 	/**
 	 * There are quite a number of PWM modes available but for the
@@ -22,8 +22,8 @@ int main (void) {
 	 * speed).  The timer is used to determine when the PWM pin should be
 	 * on and when it should be off.
 	 */
-	////TCCR1A |= _BV(COM1A1) | _BV(WGM10);
-	//TCCR1B |= _BV(CS10) | _BV(WGM12);
+	TCCR1A |= _BV(COM1A1) | _BV(WGM10);
+	TCCR1B |= _BV(CS10) | _BV(WGM12);
 
 	/**
 	 *  This loop is used to change the value in the OCR1A register.
@@ -44,9 +44,8 @@ int main (void) {
 	 *  to see what when the pwm value is at 0x00 the LED will be off
 	 *  and when it is 0xff the LED will be at its brightest.
 	 */
-	//uint8_t pwm = 0x00;
-	//bool up = true;
-	/*
+	uint8_t pwm = 0x00;
+	bool up = true;
 	for(;;) {
 
 		OCR1A = pwm;
@@ -59,6 +58,5 @@ int main (void) {
 
 		_delay_ms(10);
 	}
-	*/
 
 }
