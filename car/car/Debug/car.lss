@@ -134,7 +134,7 @@ void turn(unsigned char i){
 
     while(1)
     {
-		motor_move(0);
+		motor_move(STOP);
   c4:	80 e0       	ldi	r24, 0x00	; 0
   c6:	0e 94 40 00 	call	0x80	; 0x80 <motor_move>
     TCCR0B = 0b00000101;     //register TCCR1B // no scale
@@ -156,9 +156,9 @@ void turn(unsigned char i){
 
     while(1)
     {
-		motor_move(0);
+		motor_move(STOP);
 		turn(0);
-		motor_move(1);
+		motor_move(FORWARD);
   de:	81 e0       	ldi	r24, 0x01	; 1
   e0:	0e 94 40 00 	call	0x80	; 0x80 <motor_move>
   e4:	2f ef       	ldi	r18, 0xFF	; 255
@@ -172,7 +172,7 @@ void turn(unsigned char i){
   f4:	00 00       	nop
         _delay_ms(2000);
 
-		motor_move(0);
+		motor_move(STOP);
   f6:	80 e0       	ldi	r24, 0x00	; 0
   f8:	0e 94 40 00 	call	0x80	; 0x80 <motor_move>
 }
@@ -191,12 +191,12 @@ void turn(unsigned char i){
  10a:	e1 f7       	brne	.-8      	; 0x104 <main+0x48>
  10c:	00 c0       	rjmp	.+0      	; 0x10e <main+0x52>
  10e:	00 00       	nop
-		motor_move(1);
+		motor_move(FORWARD);
         _delay_ms(2000);
 
-		motor_move(0);
+		motor_move(STOP);
 		turn(1);
-		motor_move(1);
+		motor_move(FORWARD);
  110:	81 e0       	ldi	r24, 0x01	; 1
  112:	0e 94 40 00 	call	0x80	; 0x80 <motor_move>
  116:	2f ef       	ldi	r18, 0xFF	; 255

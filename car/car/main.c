@@ -56,14 +56,14 @@ int main(void)
 
     while(1)
     {
-		motor_move(0);
+		motor_move(STOP);
 		turn(0);
-		motor_move(1);
+		motor_move(FORWARD);
         _delay_ms(2000);
 
-		motor_move(0);
+		motor_move(STOP);
 		turn(1);
-		motor_move(1);
+		motor_move(FORWARD);
         _delay_ms(2000);
     }
 }
